@@ -1,0 +1,690 @@
+/*------ RESET------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*------ BASE------ */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* this makes main take remaining space */
+  display: flex;
+  flex-direction: column;
+}
+
+/*------ NAV------ */
+.header {
+  background: black;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  font-size: 1.5rem;
+}
+
+.nav__logo a {
+  font-family: "sans serif";
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav__logo a:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav__list a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav__toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/*------ HERO SLIDESHOW------ */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slideshow__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0;
+  animation: fade 15s infinite;
+}
+
+.slideshow__image:nth-child(1) { animation-delay: 0s; }
+.slideshow__image:nth-child(2) { animation-delay: 5s; }
+.slideshow__image:nth-child(3) { animation-delay: 10s; }
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  33% { opacity: 1; }
+  43% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/*------ HERO TEXT------ */
+.hero-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-top: 0.75rem;
+  max-width: 700px;
+  line-height: 1.6;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.2s;
+}
+
+/*------ SCROLL BUTTON------ */
+.scroll-btn {
+  margin-top: 5rem;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  transition: background 0.2s, color 0.2s;
+}
+
+.scroll-btn:hover {
+  background: white;
+  color: black;
+}
+
+/*------ ANIMATIONS------ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(6px); }
+  60% { transform: translateY(3px); }
+}
+
+/*------ ABOUT------ */
+.bio {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: transparent;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.bio-card {
+  background: transparent;
+  color: white;
+  padding: 0;
+  box-shadow: none;
+}
+
+.bio-card h2 {
+  margin-bottom: 1rem;
+}
+
+.bio-card p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/*------ FOOTER------ */
+.footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto; /* ensures footer is at bottom */
+}
+
+.footer__socials {
+  margin-bottom: 0.75rem;
+}
+
+.footer__socials a {
+  color: white;
+  margin: 0 0.5rem;
+}
+
+/*------ MOBILE------ */
+@media (max-width: 768px) {
+  .nav__toggle { display: block; }
+
+  .nav__list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: black;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav__list.open { display: flex; }
+
+  .nav__list li { padding: 1rem 0; }
+
+  .hero-text h1 { font-size: 2rem; }
+}
+
+/* ===== REFLECTIONS PAGE ===== */
+.reflections {
+  padding: 6rem 2rem;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(43, 41, 41, 0.46), rgba(31, 27, 27, 0.28)),
+    url("images/Topographic walpaper'.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.reflections h2 {
+  text-align: center;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  margin-bottom: 4rem;
+  color: #6561d8;
+  font-weight: 700;
+}
+
+/* Grid */
+.reflection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.reflection-link {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.reflection-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.reflection-card {
+  position: relative;
+  z-index: 2;
+  background: rgb(169, 173, 206);
+  border-radius: 12px;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  transform: translate(-16px, -16px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.reflection-link:hover .reflection-card {
+  transform: translate(0, 0);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+}
+
+.reflection-link.accent-green::before {
+  background: linear-gradient(#62bbe7 50%, #06627c 100%);
+}
+
+.reflection-link.accent-blue::before {
+  background: linear-gradient(135deg, #7789e2 50%, #1b539d 100%);
+}
+
+.reflection-link.accent-purple::before {
+  background: linear-gradient(135deg, #b5a9ec 55%, #433882 100%);
+}
+
+.reflection-date {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000000;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* ===== RESPONSIVE FIXES ===== */
+@media (max-width: 1024px) {
+  .reflection-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reflection-grid {
+    grid-template-columns: 1fr; /* one card per row on small screens */
+    gap: 1rem;
+  }
+
+  .reflection-card {
+    padding: 1.5rem 1.2rem;
+  }
+}
+
+/* ===== PROJECTS PAGE ===== */
+.projects {
+  padding: 6rem 2rem;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(43, 41, 41, 0.46), rgba(31, 27, 27, 0.28)),
+    url("images/Topographic walpaper'.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  margin-bottom: 4rem;
+  color: #6561d8;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-link {
+  position: relative;
+  display: block;
+}
+
+.project-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  z-index: 0; 
+}
+
+.project-card {
+  position: relative;
+  z-index: 1;
+  background: rgb(169, 173, 206);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  transform: translate(-16px, -16px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+
+.project-link:hover .project-card {
+  transform: translate(0, 0);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+}
+
+.project-link.accent-blue::before {
+  background: linear-gradient(#62bbe7 50%, #06627c 100%);
+}
+
+.project-link.accent-green::before {
+  background: linear-gradient(135deg, #7789e2 50%, #1b539d 100%);
+}
+
+.project-link.accent-purple::before {
+  background: linear-gradient(135deg, #b5a9ec 55%, #433882 100%);
+}
+
+.project-date {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000000;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* Remove default link styles from project cards */
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Ensure paragraph text looks normal */
+.project-card p {
+  color: #000000;
+  text-decoration: none;
+}
+
+
+/* ===== CONTACT PAGE ===== */
+.contact {
+  padding: 6rem 2rem;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(43, 41, 41, 0.46), rgba(31, 27, 27, 0.28)),
+    url("images/Topographic walpaper'.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  margin-bottom: 1rem;
+  color: #6561d8;
+}
+
+.contact p {
+  margin-bottom: 3rem;
+  color: #d2d6e0;
+  max-width: 600px;
+}
+
+.contact-form {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-form label {
+  font-weight: 600;
+  color: #222;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 0.75rem 1.5rem;
+  background: #6561d8;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #2f1d60;
+}
+
+.form-message {
+  color: #d32f2f;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  min-height: 1.5rem;
+  text-align: center;
+}
+
+.form-message {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ===== RESUME PAGE ===== */
+.resume {
+  flex: 1; /* allow it to expand but not push footer off-screen */
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-image:
+    linear-gradient(rgba(43, 41, 41, 0.46), rgba(31, 27, 27, 0.28)),
+    url("images/Topographic walpaper'.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.resume h2 {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  margin-bottom: 0.75rem;
+  color: #6561d8;
+}
+
+.resume-subtitle {
+  max-width: 600px;
+  margin-bottom: 3.5rem;
+  color: #d6cdcd;
+  font-size: 1.05rem;
+}
+
+.resume-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 750px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.resume-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25);
+}
+
+.resume-preview {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.resume-preview-link:hover .resume-preview {
+  transform: scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+.resume-actions {
+  margin-top: 2rem;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background: #020707;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.download-btn:hover {
+  background: #2f1d60;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .resume-card { padding: 1.75rem; }
+  .reflection-card { padding: 1.8rem 1.5rem; }
+}
+
+/* ===== DETAIL PAGES ===== */
+.detail-page {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image:
+    linear-gradient(rgba(43, 41, 41, 0.46), rgba(31, 27, 27, 0.28)),
+    url("images/Topographic walpaper'.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #222;
+}
+
+.detail-page .bio-card {
+  position: relative;
+  transform: none;
+  background: rgb(169, 173, 206); /* semi-transparent so text is readable */
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.detail-page .bio-card h2 {
+  color: #6561d8;
+  margin-bottom: 1.5rem;
+}
+
+.detail-page .bio-card p {
+  color: #222;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  margin: 2rem 0;
+  object-fit: cover;
+}
+
+.project-btn {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+  background-color: #2563eb;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.project-btn:hover {
+  background-color: #1e40af;
+  transform: translateY(-2px);
+}
+

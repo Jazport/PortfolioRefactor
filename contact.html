@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Jazlyn Portillo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  <nav class="nav">
+    <h1 class="nav__logo">
+      <a href="index.html">Jazlyn Portillo</a>
+    </h1>
+
+    <button class="nav__toggle" aria-label="Toggle navigation">☰</button>
+
+    <ul class="nav__list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Reflections.html">Reflections</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="contact">
+  <h2>Contact Me</h2>
+  <p>Have a question or want to work together? Send me a message!</p>
+
+  <!-- ✅ FORM -->
+  <form id="contactForm" class="contact-form" novalidate>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your full name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="your@email.com"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Write your message here..."
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="contact-btn">Send Message</button>
+
+    <!-- Msg under submit btn -->
+    <p id="formMessage" class="form-message" aria-live="polite"></p>
+
+  </form>
+</main>
+
+<footer class="footer">
+  <div class="footer__socials">
+    <a href="https://www.linkedin.com/in/jazlyn-portillo-sosa-48a0b8397" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin fa-2x"></i>
+    </a>
+    <a href="https://github.com/Jazport" target="_blank" aria-label="GitHub">
+      <i class="fab fa-github fa-2x"></i>
+    </a>
+  </div>
+  <p>&copy; 2025 Jazlyn Portillo</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
